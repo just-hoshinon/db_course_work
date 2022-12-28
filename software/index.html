@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Реалізація інформаційного та програмного забезпечення | Система управління проєктами</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/db_course_work/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="description" content="Курсова робота з дисципліни &quot;Бази даних&quot;">
+    
+    <link rel="preload" href="/db_course_work/assets/css/0.styles.6d2245f8.css" as="style"><link rel="preload" href="/db_course_work/assets/js/app.a8ce8484.js" as="script"><link rel="preload" href="/db_course_work/assets/js/2.87276920.js" as="script"><link rel="preload" href="/db_course_work/assets/js/22.54849276.js" as="script"><link rel="prefetch" href="/db_course_work/assets/js/10.38551af2.js"><link rel="prefetch" href="/db_course_work/assets/js/11.7d903cd2.js"><link rel="prefetch" href="/db_course_work/assets/js/12.cff61b1e.js"><link rel="prefetch" href="/db_course_work/assets/js/13.450783e2.js"><link rel="prefetch" href="/db_course_work/assets/js/14.77c6c7f9.js"><link rel="prefetch" href="/db_course_work/assets/js/15.41a5d517.js"><link rel="prefetch" href="/db_course_work/assets/js/16.4a60114d.js"><link rel="prefetch" href="/db_course_work/assets/js/17.39a4cf46.js"><link rel="prefetch" href="/db_course_work/assets/js/18.eb3cbbf8.js"><link rel="prefetch" href="/db_course_work/assets/js/19.93c434f8.js"><link rel="prefetch" href="/db_course_work/assets/js/20.ced0e9c4.js"><link rel="prefetch" href="/db_course_work/assets/js/21.c138b38a.js"><link rel="prefetch" href="/db_course_work/assets/js/23.4d060f12.js"><link rel="prefetch" href="/db_course_work/assets/js/24.f8563f36.js"><link rel="prefetch" href="/db_course_work/assets/js/25.4506eddd.js"><link rel="prefetch" href="/db_course_work/assets/js/26.6a6a3cbe.js"><link rel="prefetch" href="/db_course_work/assets/js/3.c7bbf90b.js"><link rel="prefetch" href="/db_course_work/assets/js/4.94efc75b.js"><link rel="prefetch" href="/db_course_work/assets/js/5.01e2bf8a.js"><link rel="prefetch" href="/db_course_work/assets/js/6.e32b7ccb.js"><link rel="prefetch" href="/db_course_work/assets/js/7.551916a6.js"><link rel="prefetch" href="/db_course_work/assets/js/8.e5a36723.js"><link rel="prefetch" href="/db_course_work/assets/js/9.82d705a7.js">
+    <link rel="stylesheet" href="/db_course_work/assets/css/0.styles.6d2245f8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/db_course_work/" class="home-link router-link-active"><!----> <span class="site-name">Система управління проєктами</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/db_course_work/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/just-hoshinon/db_course_work" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/db_course_work/" class="nav-link">
+  Початок
+</a></div> <a href="https://github.com/just-hoshinon/db_course_work" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/db_course_work/intro/" class="sidebar-link">Вступ</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/db_course_work/requirements/" class="sidebar-heading clickable"><span>Розроблення загальних вимог до системи</span> <span class="arrow right"></span></a> <!----></section></li><li><a href="/db_course_work/use%20cases/" class="sidebar-link">Розроблення вимог до функціональності системи</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/db_course_work/use%20cases/#загальна-схема" class="sidebar-link">Загальна схема</a></li><li class="sidebar-sub-header"><a href="/db_course_work/use%20cases/#користувач-системи" class="sidebar-link">Користувач системи</a></li><li class="sidebar-sub-header"><a href="/db_course_work/use%20cases/#користувач-проєкту" class="sidebar-link">Користувач проєкту</a></li><li class="sidebar-sub-header"><a href="/db_course_work/use%20cases/#менеджер-проєкту" class="sidebar-link">Менеджер проєкту</a></li><li class="sidebar-sub-header"><a href="/db_course_work/use%20cases/#менеджер-воркспеису" class="sidebar-link">Менеджер воркспейсу</a></li><li class="sidebar-sub-header"><a href="/db_course_work/use%20cases/#адміністратор-системи" class="sidebar-link">Адміністратор системи</a></li></ul></li><li><a href="/db_course_work/design/" class="sidebar-link">Проектування інформаційного забезпечення</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/db_course_work/design/#модель-бізнес-об-єктів" class="sidebar-link">Модель бізнес об'єктів</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#модель-сутність-зв-язок" class="sidebar-link">Модель Сутність-Зв'язок</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#опис-er-моделі" class="sidebar-link">Опис ER-моделі</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/db_course_work/design/#user-користувач" class="sidebar-link">User (Користувач)</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#workspace-воркспеис" class="sidebar-link">Workspace (Воркспейс)</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#project-проєкт" class="sidebar-link">Project (Проєкт)</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#task-завдання" class="sidebar-link">Task (Завдання)</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#board-дошка" class="sidebar-link">Board (Дошка)</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#status-статус" class="sidebar-link">Status (Статус)</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#access" class="sidebar-link">Access</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#role-роль" class="sidebar-link">Role (Роль)</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#grant" class="sidebar-link">Grant</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#requesttype" class="sidebar-link">RequestType</a></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#operationtype" class="sidebar-link">OperationType</a></li></ul></li><li class="sidebar-sub-header"><a href="/db_course_work/design/#реляціина-схема" class="sidebar-link">Реляційна схема</a></li></ul></li><li><a href="/db_course_work/software/" aria-current="page" class="active sidebar-link">Реалізація інформаційного та програмного забезпечення</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/db_course_work/software/#sql-скрипт" class="sidebar-link">SQL-скрипт</a></li><li class="sidebar-sub-header"><a href="/db_course_work/software/#restfull-сервіс-для-управління-даними" class="sidebar-link">RESTfull сервіс для управління даними</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/db_course_work/software/#фаил-схема-бази-даних" class="sidebar-link">Файл схема бази даних</a></li><li class="sidebar-sub-header"><a href="/db_course_work/software/#сервіс-підключення-до-бази-даних" class="sidebar-link">Сервіс підключення до бази даних</a></li><li class="sidebar-sub-header"><a href="/db_course_work/software/#контролер-якии-оброблює-запити" class="sidebar-link">Контролер, який оброблює запити</a></li><li class="sidebar-sub-header"><a href="/db_course_work/software/#сервіс-якии-опрацьовує-запити-контролера" class="sidebar-link">Сервіс, який опрацьовує запити контролера</a></li><li class="sidebar-sub-header"><a href="/db_course_work/software/#модуль-api-на-back-end-сервері" class="sidebar-link">Модуль API на Back-end сервері</a></li><li class="sidebar-sub-header"><a href="/db_course_work/software/#фаил-запуску-серверу" class="sidebar-link">Файл запуску серверу</a></li></ul></li></ul></li><li><a href="/db_course_work/test/" class="sidebar-link">Тестування працездатності системи</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/db_course_work/test/#запуск-системи" class="sidebar-link">Запуск системи</a></li><li class="sidebar-sub-header"><a href="/db_course_work/test/#запит-post" class="sidebar-link">Запит POST</a></li><li class="sidebar-sub-header"><a href="/db_course_work/test/#запит-get" class="sidebar-link">Запит GET</a></li><li class="sidebar-sub-header"><a href="/db_course_work/test/#запит-patch" class="sidebar-link">Запит PATCH</a></li><li class="sidebar-sub-header"><a href="/db_course_work/test/#запит-delete" class="sidebar-link">Запит DELETE</a></li></ul></li><li><a href="/db_course_work/conclusion/" class="sidebar-link">Висновки</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="реалізація-інформаціиного-та-програмного-забезпечення"><a href="#реалізація-інформаціиного-та-програмного-забезпечення" class="header-anchor">#</a> Реалізація інформаційного та програмного забезпечення</h1> <p>В рамках проекту розробляється:</p> <h2 id="sql-скрипт"><a href="#sql-скрипт" class="header-anchor">#</a> SQL-скрипт</h2> <div class="language- extra-class"><pre class="language-text"><code>-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema default_schema
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema imbaza
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `imbaza` ;
+
+-- -----------------------------------------------------
+-- Schema imbaza
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `imbaza` DEFAULT CHARACTER SET utf8 ;
+USE `imbaza` ;
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`user` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`user` (
+  `id` BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID())),
+  `email` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `avatar` VARCHAR(100) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`role`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`role` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`role` (
+  `id` BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID())),
+  `name` ENUM('ProjectManager', 'ProjectUser', 'SystemAdministrator', 'WorkspaceManager') NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`access`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`access` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`access` (
+  `user_id` BINARY(16) NOT NULL,
+  `role_id` BINARY(16) NOT NULL,
+  PRIMARY KEY (`user_id`, `role_id`),
+  INDEX `fk_access_user_idx` (`user_id` ASC) VISIBLE,
+  INDEX `fk_access_role1_idx` (`role_id` ASC) VISIBLE,
+  CONSTRAINT `fk_access_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `imbaza`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_access_role`
+    FOREIGN KEY (`role_id`)
+    REFERENCES `imbaza`.`role` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`operation_type`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`operation_type` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`operation_type` (
+  `id` BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID())),
+  `name` ENUM('create', 'read', 'update', 'delete') NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`request_type`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`request_type` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`request_type` (
+  `id` BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID())),
+  `object_id` BINARY(16) NOT NULL,
+  `operation_type_id` BINARY(16) NOT NULL,
+  PRIMARY KEY (`id`, `object_id`, `operation_type_id`),
+  INDEX `fk_request_type_operation_type1_idx` (`operation_type_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  CONSTRAINT `fk_request_operation`
+    FOREIGN KEY (`operation_type_id`)
+    REFERENCES `imbaza`.`operation_type` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`grant`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`grant` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`grant` (
+  `request_type_id` BINARY(16) NOT NULL,
+  `role_id` BINARY(16) NOT NULL,
+  PRIMARY KEY (`request_type_id`, `role_id`),
+  INDEX `fk_grant_role1_idx` (`role_id` ASC) VISIBLE,
+  CONSTRAINT `fk_grant_request`
+    FOREIGN KEY (`request_type_id`)
+    REFERENCES `imbaza`.`request_type` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_grant_role`
+    FOREIGN KEY (`role_id`)
+    REFERENCES `imbaza`.`role` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`workspace`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`workspace` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`workspace` (
+  `id` BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID())),
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(200) NULL DEFAULT NULL,
+  `owner_id` BINARY(16) NOT NULL,
+  PRIMARY KEY (`id`, `owner_id`),
+  INDEX `fk_workspace_user1_idx` (`owner_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `owner_id_UNIQUE` (`owner_id` ASC) VISIBLE,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE,
+  CONSTRAINT `fk_workspace_user`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `imbaza`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`project`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`project` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`project` (
+  `id` BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID())),
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(45) NULL DEFAULT NULL,
+  `manager_id` BINARY(16) NOT NULL,
+  `workspace_id` BINARY(16) NOT NULL,
+  PRIMARY KEY (`manager_id`, `workspace_id`, `id`),
+  INDEX `fk_project_user1_idx` (`manager_id` ASC) VISIBLE,
+  INDEX `fk_project_workspace1_idx` (`workspace_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  CONSTRAINT `fk_project_user`
+    FOREIGN KEY (`manager_id`)
+    REFERENCES `imbaza`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_project_workspace`
+    FOREIGN KEY (`workspace_id`)
+    REFERENCES `imbaza`.`workspace` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`board`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`board` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`board` (
+  `id` BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID())),
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(200) NULL,
+  `project_id` BINARY(16) NOT NULL,
+  PRIMARY KEY (`id`, `project_id`),
+  INDEX `fk_board_project1_idx` (`project_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  CONSTRAINT `fk_board_project`
+    FOREIGN KEY (`project_id`)
+    REFERENCES `imbaza`.`project` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`task`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`task` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`task` (
+  `id` BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID())),
+  `title` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(200) NULL DEFAULT NULL,
+  `photo` VARCHAR(100) NULL DEFAULT NULL,
+  `deadline` DATETIME NULL DEFAULT NULL,
+  `board_id` BINARY(16) NOT NULL,
+  PRIMARY KEY (`id`, `board_id`),
+  INDEX `fk_task_board1_idx` (`board_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  CONSTRAINT `fk_task_board`
+    FOREIGN KEY (`board_id`)
+    REFERENCES `imbaza`.`board` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`status`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`status` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`status` (
+  `id` BINARY(16) NOT NULL DEFAULT (UUID_TO_BIN(UUID())),
+  `name` ENUM('Done', 'BugFound', 'InReview', 'InProgress', 'ToDo', 'BackLog') NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `imbaza`.`task_status`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imbaza`.`task_status` ;
+
+CREATE TABLE IF NOT EXISTS `imbaza`.`task_status` (
+  `task_id` BINARY(16) NOT NULL,
+  `status_id` BINARY(16) NOT NULL,
+  PRIMARY KEY (`task_id`, `status_id`),
+  INDEX `fk_task_status_status1_idx` (`status_id` ASC) VISIBLE,
+  CONSTRAINT `fk_task_status_task`
+    FOREIGN KEY (`task_id`)
+    REFERENCES `imbaza`.`task` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_task_status_status`
+    FOREIGN KEY (`status_id`)
+    REFERENCES `imbaza`.`status` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+</code></pre></div><h2 id="restfull-сервіс-для-управління-даними"><a href="#restfull-сервіс-для-управління-даними" class="header-anchor">#</a> RESTfull сервіс для управління даними</h2> <h3 id="фаил-схема-бази-даних"><a href="#фаил-схема-бази-даних" class="header-anchor">#</a> Файл схема бази даних</h3> <div class="language-prisma extra-class"><pre class="language-text"><code>
+generator client {
+  provider = &quot;prisma-client-js&quot;
+}
+
+datasource db {
+  provider = &quot;mysql&quot;
+  url      = env(&quot;DATABASE_URL&quot;)
+}
+
+model access {
+  id      Bytes @unique(map: &quot;id_UNIQUE&quot;) @default(dbgenerated(&quot;(uuid_to_bin(uuid()))&quot;)) @db.Binary(16)
+  user_id Bytes @db.Binary(16)
+  role_id Bytes @db.Binary(16)
+  role    role  @relation(fields: [role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_access_role&quot;)
+  user    user  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_access_user&quot;)
+
+  @@id([id, user_id, role_id])
+  @@index([role_id], map: &quot;fk_access_role1_idx&quot;)
+  @@index([user_id], map: &quot;fk_access_user_idx&quot;)
+}
+
+model board {
+  id          Bytes   @unique(map: &quot;id_UNIQUE&quot;) @default(dbgenerated(&quot;(uuid_to_bin(uuid()))&quot;)) @db.Binary(16)
+  name        String  @db.VarChar(45)
+  description String? @db.VarChar(200)
+  project_id  Bytes   @db.Binary(16)
+  project     project @relation(fields: [project_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_board_project&quot;)
+  task        task[]
+
+  @@id([id, project_id])
+  @@index([project_id], map: &quot;fk_board_project1_idx&quot;)
+}
+
+model grant {
+  request_type_id Bytes        @db.Binary(16)
+  role_id         Bytes        @db.Binary(16)
+  request_type    request_type @relation(fields: [request_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_grant_request&quot;)
+  role            role         @relation(fields: [role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_grant_role&quot;)
+
+  @@id([request_type_id, role_id])
+  @@index([role_id], map: &quot;fk_grant_role1_idx&quot;)
+}
+
+model OperationType {
+  id           Bytes               @id @unique(map: &quot;id_UNIQUE&quot;) @default(dbgenerated(&quot;(uuid_to_bin(uuid()))&quot;)) @db.Binary(16)
+  name         String              @unique(map: &quot;name_UNIQUE&quot;)
+  request_type request_type[]
+}
+
+model project {
+  id           Bytes     @unique(map: &quot;id_UNIQUE&quot;) @default(dbgenerated(&quot;(uuid_to_bin(uuid()))&quot;)) @db.Binary(16)
+  name         String    @db.VarChar(45)
+  description  String?   @db.VarChar(45)
+  manager_id   Bytes     @db.Binary(16)
+  workspace_id Bytes     @db.Binary(16)
+  board        board[]
+  user         user      @relation(fields: [manager_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_project_user&quot;)
+  workspace    workspace @relation(fields: [workspace_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_project_workspace&quot;)
+
+  @@id([manager_id, workspace_id, id])
+  @@index([manager_id], map: &quot;fk_project_user1_idx&quot;)
+  @@index([workspace_id], map: &quot;fk_project_workspace1_idx&quot;)
+}
+
+model request_type {
+  id                Bytes          @unique(map: &quot;id_UNIQUE&quot;) @default(dbgenerated(&quot;(uuid_to_bin(uuid()))&quot;)) @db.Binary(16)
+  object_id         Bytes          @db.Binary(16)
+  operation_type_id Bytes          @db.Binary(16)
+  grant             grant[]
+  operation_type    OperationType  @relation(fields: [operation_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_request_operation&quot;)
+
+  @@id([id, object_id, operation_type_id])
+  @@index([operation_type_id], map: &quot;fk_request_type_operation_type1_idx&quot;)
+}
+
+model role {
+  id     Bytes     @id @unique(map: &quot;id_UNIQUE&quot;) @default(dbgenerated(&quot;(uuid_to_bin(uuid()))&quot;)) @db.Binary(16)
+  name   role_name
+  access access[]
+  grant  grant[]
+}
+
+model status {
+  id          Bytes         @id @unique(map: &quot;id_UNIQUE&quot;) @default(dbgenerated(&quot;(uuid_to_bin(uuid()))&quot;)) @db.Binary(16)
+  name        status_name   @unique(map: &quot;name_UNIQUE&quot;)
+  task_status task_status[]
+}
+
+model task {
+  id          Bytes         @unique(map: &quot;id_UNIQUE&quot;) @default(dbgenerated(&quot;(uuid_to_bin(uuid()))&quot;)) @db.Binary(16)
+  title       String        @db.VarChar(45)
+  description String?       @db.VarChar(200)
+  photo       String?       @db.VarChar(100)
+  deadline    DateTime?     @db.DateTime(0)
+  board_id    Bytes         @db.Binary(16)
+  board       board         @relation(fields: [board_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_task_board&quot;)
+  task_status task_status[]
+
+  @@id([id, board_id])
+  @@index([board_id], map: &quot;fk_task_board1_idx&quot;)
+}
+
+model task_status {
+  task_id   Bytes  @db.Binary(16)
+  status_id Bytes  @db.Binary(16)
+  status    status @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_task_status_status&quot;)
+  task      task   @relation(fields: [task_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_task_status_task&quot;)
+
+  @@id([task_id, status_id])
+  @@index([status_id], map: &quot;fk_task_status_status1_idx&quot;)
+}
+
+model user {
+  id        Bytes      @id @unique(map: &quot;id_UNIQUE&quot;) @default(dbgenerated(&quot;(uuid_to_bin(uuid()))&quot;)) @db.Binary(16)
+  email     String     @unique(map: &quot;email_UNIQUE&quot;) @db.VarChar(45)
+  username  String     @unique(map: &quot;username_UNIQUE&quot;) @db.VarChar(45)
+  avatar    String?    @db.VarChar(100)
+  access    access[]
+  project   project[]
+  workspace workspace?
+}
+
+model workspace {
+  id          Bytes     @unique(map: &quot;id_UNIQUE&quot;) @default(dbgenerated(&quot;(uuid_to_bin(uuid()))&quot;)) @db.Binary(16)
+  name        String    @unique(map: &quot;name_UNIQUE&quot;) @db.VarChar(45)
+  description String?   @db.VarChar(200)
+  owner_id    Bytes     @unique(map: &quot;owner_id_UNIQUE&quot;) @db.Binary(16)
+  project     project[]
+  user        user      @relation(fields: [owner_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: &quot;fk_workspace_user&quot;)
+
+  @@id([id, owner_id])
+  @@index([owner_id], map: &quot;fk_workspace_user1_idx&quot;)
+}
+
+enum status_name {
+  Done
+  BugFound
+  InReview
+  InProgress
+  ToDo
+  BackLog
+}
+
+enum role_name {
+  ProjectManager
+  ProjectUser
+  SystemAdministrator
+  WorkspaceManager
+}
+</code></pre></div><h3 id="сервіс-підключення-до-бази-даних"><a href="#сервіс-підключення-до-бази-даних" class="header-anchor">#</a> Сервіс підключення до бази даних</h3> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>INestApplication<span class="token punctuation">,</span> Injectable<span class="token punctuation">,</span> OnModuleInit<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@nestjs/common&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> PrismaClient <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@prisma/client'</span><span class="token punctuation">;</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">Injectable</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">PrismaService</span> <span class="token keyword">extends</span> <span class="token class-name">PrismaClient</span> <span class="token keyword">implements</span> <span class="token class-name">OnModuleInit</span><span class="token punctuation">{</span>
+  <span class="token keyword">async</span> <span class="token function">onModuleInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">async</span> <span class="token function">enableShutdownHooks</span><span class="token punctuation">(</span>app<span class="token operator">:</span> INestApplication<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'beforeExit'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">await</span> app<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="контролер-якии-оброблює-запити"><a href="#контролер-якии-оброблює-запити" class="header-anchor">#</a> Контролер, який оброблює запити</h3> <div class="language-ts extra-class"><pre class="language-ts"><code>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>Body<span class="token punctuation">,</span> Controller<span class="token punctuation">,</span> Delete<span class="token punctuation">,</span> Get<span class="token punctuation">,</span> Param<span class="token punctuation">,</span> Patch<span class="token punctuation">,</span> Post<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@nestjs/common&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>OperationDTO<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;./dto/OperationDTO&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>PermissionService<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;./PermissionService&quot;</span><span class="token punctuation">;</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">Controller</span></span><span class="token punctuation">(</span><span class="token string">'permissions'</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">PermissionController</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+      <span class="token keyword">private</span> permissionService<span class="token operator">:</span> PermissionService<span class="token punctuation">,</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">Get</span></span><span class="token punctuation">(</span><span class="token string">'/:id'</span><span class="token punctuation">)</span>
+  <span class="token keyword">async</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token decorator"><span class="token at operator">@</span><span class="token function">Param</span></span><span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span> id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>permissionService<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">Post</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">async</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token decorator"><span class="token at operator">@</span><span class="token function">Body</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> body<span class="token operator">:</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>permissionService<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>body<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">Delete</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">async</span> <span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token decorator"><span class="token at operator">@</span><span class="token function">Body</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> body<span class="token operator">:</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>permissionService<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>body<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">Patch</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">async</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token decorator"><span class="token at operator">@</span><span class="token function">Body</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> body<span class="token operator">:</span> OperationDTO<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>permissionService<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h3 id="сервіс-якии-опрацьовує-запити-контролера"><a href="#сервіс-якии-опрацьовує-запити-контролера" class="header-anchor">#</a> Сервіс, який опрацьовує запити контролера</h3> <div class="language-ts extra-class"><pre class="language-ts"><code>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>Injectable<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;@nestjs/common&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>PrismaService<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;../database/PrismaService&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>OperationDTO<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;./dto/OperationDTO&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> OperationType <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@prisma/client'</span>
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">Injectable</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">PermissionService</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+      <span class="token keyword">private</span> prisma<span class="token operator">:</span> PrismaService<span class="token punctuation">,</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token keyword">async</span> <span class="token function">create</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> operation<span class="token operator">:</span> OperationType <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span>prisma<span class="token punctuation">.</span>operationType<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      data<span class="token operator">:</span> <span class="token punctuation">{</span>
+        name
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">OperationDTO</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getStringFromBuffer</span><span class="token punctuation">(</span>operation<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span> operation<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">async</span> <span class="token keyword">delete</span><span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> operation<span class="token operator">:</span> OperationType <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span>prisma<span class="token punctuation">.</span>operationType<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      where<span class="token operator">:</span> <span class="token punctuation">{</span>
+        id<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getBufferFromString</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">OperationDTO</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getStringFromBuffer</span><span class="token punctuation">(</span>operation<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span> operation<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">async</span> <span class="token function">get</span><span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> operation<span class="token operator">:</span> OperationType <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span>prisma<span class="token punctuation">.</span>operationType<span class="token punctuation">.</span><span class="token function">findUnique</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      where<span class="token operator">:</span> <span class="token punctuation">{</span>
+        id<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getBufferFromString</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">OperationDTO</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getStringFromBuffer</span><span class="token punctuation">(</span>operation<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span> operation<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">async</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span> id<span class="token punctuation">,</span> name <span class="token punctuation">}</span><span class="token operator">:</span> OperationDTO<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> operation<span class="token operator">:</span> OperationType <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span>prisma<span class="token punctuation">.</span>operationType<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      where<span class="token operator">:</span> <span class="token punctuation">{</span>
+        id<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getBufferFromString</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      data<span class="token operator">:</span> <span class="token punctuation">{</span>
+        name<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">OperationDTO</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getStringFromBuffer</span><span class="token punctuation">(</span>operation<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span> operation<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getBufferFromString</span><span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> Buffer <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Buffer<span class="token punctuation">.</span><span class="token function">alloc</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>id<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">-</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'hex'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getStringFromBuffer</span><span class="token punctuation">(</span>id<span class="token operator">:</span> Buffer<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> str <span class="token operator">=</span> id<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token string">'hex'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h3 id="модуль-api-на-back-end-сервері"><a href="#модуль-api-на-back-end-сервері" class="header-anchor">#</a> Модуль API на Back-end сервері</h3> <div class="language-ts extra-class"><pre class="language-ts"><code>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nestjs/common'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>PermissionController<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;./permission/PermissionController&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>PermissionService<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;./permission/PermissionService&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>PrismaService<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;./database/PrismaService&quot;</span><span class="token punctuation">;</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">Module</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  controllers<span class="token operator">:</span> <span class="token punctuation">[</span>PermissionController<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  providers<span class="token operator">:</span> <span class="token punctuation">[</span>PermissionService<span class="token punctuation">,</span> PrismaService<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+
+</code></pre></div><h3 id="фаил-запуску-серверу"><a href="#фаил-запуску-серверу" class="header-anchor">#</a> Файл запуску серверу</h3> <div class="language-ts extra-class"><pre class="language-ts"><code>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NestFactory <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@nestjs/core'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> AppModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./AppModule'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">bootstrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">await</span> NestFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>AppModule<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">bootstrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Останнє оновлення:</span> <span class="time">12/29/2022, 12:59:33 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/db_course_work/design/" class="prev">
+        Проектування інформаційного забезпечення
+      </a></span> <span class="next"><a href="/db_course_work/test/">
+        Тестування працездатності системи
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/db_course_work/assets/js/app.a8ce8484.js" defer></script><script src="/db_course_work/assets/js/2.87276920.js" defer></script><script src="/db_course_work/assets/js/22.54849276.js" defer></script>
+  </body>
+</html>
